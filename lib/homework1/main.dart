@@ -1,4 +1,4 @@
-import 'package:exam_scheduler/screens/ExamListScreen.dart';
+import 'package:exam_scheduler/homework1/screens/ExamListScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
