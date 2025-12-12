@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/Category.dart';
 import '../services/ApiService.dart';
+import '../services/NotificationService.dart';
 import '../widgets/CategoryCard.dart';
+import 'FavoritesScreen.dart';
 import 'MealsScreen.dart';
 import 'RandomRecipeScreen.dart';
 
@@ -46,6 +48,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         title: Text("Meal Categories"),
         actions: [
           IconButton(
+            icon: Icon(Icons.notifications_active),
+            tooltip: 'Test Notification',
+            onPressed: () async {
+              await NotificationService().showImmediateNotification();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Test notification sent!')),
+              );
+            },
+          ),
+          IconButton(
             icon: Icon(Icons.casino),
             onPressed: () {
               Navigator.push(
@@ -53,7 +65,16 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 MaterialPageRoute(builder: (_) => RandomRecipeScreen()),
               );
             },
-          )
+          ),
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => FavoritesScreen()),
+              );
+            },
+          ),
         ],
       ),
       body: Column(
